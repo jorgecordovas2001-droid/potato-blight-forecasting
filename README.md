@@ -1,2 +1,45 @@
-# potato-blight-forecasting
-Simulation-Based Machine Learning Framework for Potato Late Blight Forecasting
+# Forecasting Potato Late Blight Risk: A Reproducible Machine Learning Framework
+
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Overview
+This repository contains the official dataset, computational pipeline, and machine learning models for the manuscript: **"Forecasting Potato Late Blight Risk: A Reproducible Machine Learning Framework Using Synthetic Agronomic Data"** (Currently under review in *Agronomy*, MDPI).
+
+The project establishes a highly replicable, simulation-based computational framework to predict *Phytophthora infestans* outbreaks based on fundamental microclimatic interactions and spatial crop management metrics.
+
+## Repository Structure
+* `dataset_blight_synthetic.csv`: The highly calibrated synthetic cohort of 5,000 instances mirroring genuine field-level variability.
+* `blight_forecasting_models.ipynb`: The main Google Colab / Jupyter Notebook containing data preprocessing, exploratory data analysis (EDA), model training (Logistic Regression, Random Forest, MLP, XGBoost), and post-hoc interpretability analysis.
+* `requirements.txt`: Standard list of Python dependencies.
+* `environment.yml`: Conda environment configuration for strict reproducibility.
+
+## Reproducibility and Execution
+
+### Option 1: Quick Run via Google Colab (Recommended)
+You can reproduce the entire pipeline without installing anything locally by uploading the `blight_forecasting_models.ipynb` file directly to Google Colab. Ensure you upload the `dataset_blight_synthetic.csv` to the Colab runtime before executing the cells.
+
+### Option 2: Local Execution
+To run the models locally with the exact same dependencies used in our study, please use the provided `requirements.txt` or `environment.yml` files.
+
+**Using pip:**
+> pip install -r requirements.txt
+
+**Using Conda:**
+> conda env create -f environment.yml
+> conda activate blight-forecasting-env
+
+## Agronomic Features (Inputs)
+The predictive execution relies on tabular agronomic and microclimatic metrics, including:
+* **Crop Age** (Phenological maturity)
+* **Temperature & Relative Humidity** (Atmospheric moisture)
+* **Rainfall** (Cumulative precipitation)
+* **Isolation Index** (Spatial canopy geometry)
+
+## Results
+Tree-based ensembles definitively eclipsed single linear classifiers in our evaluation. The **XGBoost** architecture maximized the predictive boundaries, securing a peak accuracy threshold of **87.3%** and an Area Under the Curve (AUC) of **0.91**.
+
+## Citation
+If you use this code or dataset in your research, please cite our paper:
+
+> Cordova, J.; Huaman, J. Forecasting Potato Late Blight Risk: A Reproducible Machine Learning Framework Using Synthetic Agronomic Data. *Agronomy* 2026. (Under Review).
